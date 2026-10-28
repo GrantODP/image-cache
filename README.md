@@ -15,8 +15,6 @@ A asynchronous image caching and loading engine for Rust.
 
 ## Set up the cache using the builder pattern and initialize it:
 ``` rust
-use std::time::Duration;
-
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // 1. Build the image cache with custom configuration
@@ -38,4 +36,4 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let image = cache.fetch("https://example.com/image.png").await?
 
     Ok(())
-}```
+}
