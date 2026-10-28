@@ -7,7 +7,7 @@ A asynchronous image caching and loading engine for Rust.
 * **Dual-Source Support:** Parses and handles local file paths  and web URLs.
 * **Memory Caching:** Backed by Moka to keep memory usage strictly within your specified limits (`max_cache_bytes`).
 * **Background Fetching:** Spawns asynchronous download and decode tasks onto a user-provided Tokio runtime handle.
-* **Deduplication & State Tracking:** Tracks loading states (`Ready`, `Failed`, or pending).
+* **Deduplication & State Tracking:** Tracks loading states (`Ready`, `Failed`, or `Loading`).
 
 
 ---
