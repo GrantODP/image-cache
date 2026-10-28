@@ -16,11 +16,12 @@ futures-util = "0.3"
 async-trait = "0.1"
 parking_lot = "0.12"
 tracing = "0.1"
-image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp", "gif"]}
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp", "gif"], optional = true }
 ipnet = { version = "2", optional = true }
 
 [features]
 default = []
+decode = ["dep:image"]
 ssrf-guard = ["dep:ipnet"]
 
 [dev-dependencies]
