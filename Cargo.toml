@@ -1,0 +1,31 @@
+[package]
+name = "image-cache"
+version = "0.1.0"
+edition = "2024"
+
+
+
+[dependencies]
+tokio = { version = "1", features = ["rt", "fs", "sync", "time", "macros"] }
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "stream"] }
+moka = { version = "0.12", features = ["future"] }
+bytes = "1"
+url = "2"
+thiserror = "2"
+futures-util = "0.3"
+async-trait = "0.1"
+parking_lot = "0.12"
+tracing = "0.1"
+
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp", "gif"], optional = true }
+ipnet = { version = "2", optional = true }
+
+[features]
+default = []
+decode = ["dep:image"]
+ssrf-guard = ["dep:ipnet"]
+
+[dev-dependencies]
+tokio = { version = "1", features = ["full", "test-util"] }
+wiremock = "0.6"
+tempfile = "3"
