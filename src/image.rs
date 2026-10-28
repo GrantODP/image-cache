@@ -1,7 +1,5 @@
 use std::sync::Arc;
 
-use image::imageops::FilterType;
-
 #[derive(Debug, Clone)]
 pub struct ImageData {
     pub bytes: bytes::Bytes,
@@ -23,6 +21,7 @@ pub enum ImageState {
     Failed(Arc<crate::Error>),
 }
 
+#[cfg(feature = "decode")]
 impl ImageData {
     pub fn decode(&mut self, max_pixels: u64) -> Result<Arc<Rgba>, crate::Error> {
         if let Some(ref decoded) = self.decoded {
@@ -74,7 +73,7 @@ impl ImageData {
             let new_width = (width as f64 * scale) as u32;
             let new_height = (height as f64 * scale) as u32;
 
-            img = img.resize_exact(new_width, new_height, FilterType::Lanczos3);
+            img = img.resize_exact(new_width, new_height, image::imageops::FilterType::Lanczos3);
         }
 
         let rgba = img.to_rgba8();

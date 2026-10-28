@@ -9,6 +9,7 @@ pub enum Error {
     #[error("Image to large max: {max}, got: {received}")]
     TooLarge { max: u64, received: u64 },
 
+    #[cfg(feature = "decode")]
     #[error("{0}")]
     ImageError(#[from] image::ImageError),
 }
